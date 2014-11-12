@@ -28,29 +28,12 @@ describe 'The TicTacToe Server' do
   end
 
   context '/move route' do
-    xit 'does something' do
-      board = Board.new
-      #puts board
-      #board_yaml = YAML::dump(board)
-      #puts board_yaml
-      #reboard = YAML::load(board_yaml)
-      #puts reboard
-      #game = Game.new(board, AI.new(:X), AI.new(:O))
-      post "/move", {:spot => 4}, {"rack.session" => {'board' => board}}
+    it 'makes a move on the game board' do
+      game = Game.new(Board.new, Human.new(:X), AI.new(:O))
+      post "/move", {:spot => 4}, {"rack.session" => {'game' => game}}
       expect(last_response).to be_ok
-      #expect(last_response.body).to eq('4')
-      #expect(board.empty?).to eq(false)
-      #board = YAML::load(session[:board])
-      #expect(board[4]).to eq(:X)
-      #board = YAML::dump(rack_mock_session.cookie_jar)
-      #puts session[:board]
-      # PROVES IT IS THERE SOMEWHERE!!!
-      #puts YAML::dump(rack_mock_session)
-      #binding.pry
-      #puts board
-
-      #expect(board[4]).to eq(:X)
-      expect(last_request.session[:board][4]).to eq(:X)
+      game = last_request.session[:game]
+      expect(game.board[4]).to eq(:X)
     end
   end
 end

@@ -6,7 +6,4 @@ class Human
     @token = token
   end
 
-  def move(board)
-    # TODO: Implement or remove this
-  end
 end

@@ -1,5 +1,7 @@
 class Game
 
+  attr_reader :board
+
   def initialize(board, player1, player2)
     @board = board
     @player1 = player1
@@ -21,8 +23,12 @@ class Game
     nil
   end
 
-  def turn
-    @playerup.move(@board)
+  def turn(spot = nil)
+    if spot.nil?
+      @playerup.move(@board)
+    else
+      @board.place(@playerup.token, spot)
+    end
     @playerup = @playerup == @player1 ? @player2 : @player1
   end
 

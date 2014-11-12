@@ -10,18 +10,9 @@ get '/game/new' do
 end
 
 post '/move' do
-  #game = session[:game].inspect
-  #puts session[:board]
-  #board = YAML::load(session[:board])
-  #puts board
-  board = session[:board]
-  #puts "BOARD: " + board
-  spot = params[:spot]
-  board.place(:X, 4)
-  #session[:board] = board
-  #session[:board] = YAML::dump(board)
-  #puts session[:board][4]
-  '4'
+  game = session[:game]
+  spot = params[:spot].to_i
+  game.turn(spot)
 end
 
 

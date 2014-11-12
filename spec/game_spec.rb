@@ -79,6 +79,17 @@ describe Game do
       expect(board.empty?).to eq(false)
     end
 
+    it 'makes the player move in the given spot, if a spot is given' do
+      game.turn(3)
+      expect(board[3]).to eq(player1.token)
+
+      game.turn(1)
+      expect(board[1]).to eq(player2.token)
+
+      game.turn(5)
+      expect(board[5]).to eq(player1.token)
+    end
+
     it 'alternates players across invocations' do
       game.turn
       expect(count_tokens(player1, board)).to eq(1)

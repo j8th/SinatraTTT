@@ -13,10 +13,10 @@ describe 'The TicTacToe Server' do
     Sinatra::Application
   end
 
-  it "says hello" do
-    get '/'
-    expect(last_response).to be_ok
-    expect(last_response.body).to eq('Hello World')
+  context '/' do
+    it 'loads' do
+      # Code here
+    end
   end
 
   context '/game route' do

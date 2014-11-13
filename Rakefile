@@ -3,12 +3,14 @@ task default: %w[spec]
 
 desc 'Run the normal test suite, excluding some slower tests.'
 task :spec do
-  exec 'rspec --tag ~slow'
+  system 'rspec --tag ~slow'
+  Rake::Task['jasmine:ci'].invoke
 end
 
 desc 'Run the full test suite.'
 task :fullspec do
-  exec 'rspec'
+  system 'rspec'
+  Rake::Task['jasmine:ci'].invoke
 end
 
 

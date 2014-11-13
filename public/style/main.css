@@ -1,3 +1,33 @@
-p {
-	color: blue;
+td {
+  width: 100px;
+  height: 100px;
+  cursor: pointer;
+}
+
+td.border-top {
+  border-top: 2px solid black;
+}
+
+td.border-right {
+  border-right: 2px solid black;
+}
+
+td.border-bottom {
+  border-bottom: 2px solid black;
+}
+
+td.border-left {
+  border-left: 2px solid black;
+}
+
+/*
+ * Gets rid of space between table cells for us.
+ *
+ * Reference:
+ * http://stackoverflow.com/questions/2279396/how-to-remove-unwanted-space-between-rows-and-columns-in-table
+ */
+table {
+	border-collapse: collapse;
+	/* Appears to be unnecessary but leaving in case we find some browsers for which we need it. */
+	/* border-spacing: 0; */
 }

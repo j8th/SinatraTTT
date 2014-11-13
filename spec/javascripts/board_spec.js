@@ -23,4 +23,24 @@ describe('Board', function() {
     });
   });
 
+  describe('Event Listening', function(){
+
+    var game;
+
+    beforeEach(function(){
+      game = new Game();
+    });
+
+    describe('#add_listener', function(){
+      it('Adds an event listener to the Board.', function(){
+        spyOn(game, 'listen_board_click_event');
+
+        board.add_listener(game);
+        board.click_event(4);
+
+        expect(game.listen_board_click_event).toHaveBeenCalledWith(4);
+      });
+    });
+  });
+
 });

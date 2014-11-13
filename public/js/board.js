@@ -6,12 +6,16 @@ function Board(element_string) {
   var obj = $(element_string);
   var spots = [];
   var cells = [];
+  var listeners = [];
 
-  // Constructor
-  $('td', obj).click(function(){
-    console.log('me!');
+  $('td', obj).each(function(){
+    var obj = $(this);
+    obj.index = cells.length;
+    cells.push(obj);
+    obj.click(function(){
+      this.click_event(obj.index);
+    });
   });
-  // End Constructor
 
 
   // Public Methods
@@ -23,6 +27,15 @@ function Board(element_string) {
     if( spots[i] === undefined )
       return null;
     return spots[i];
+  };
+
+  this.click_event = function(index){
+    for(var i = 0; i < listeners.length; i++)
+      listeners[i].listen_board_click_event(index);
+  };
+
+  this.add_listener = function(listener) {
+    listeners.push(listener);
   };
 
 

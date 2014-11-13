@@ -1,5 +1,5 @@
 'use strict';
 
 $(document).ready(function(){
-  // Nothing so far.
+  var board = new Board('table#board');
 });

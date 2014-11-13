@@ -12,3 +12,5 @@ task :fullspec do
 end
 
 
+require 'jasmine'
+load 'jasmine/tasks/jasmine.rake'

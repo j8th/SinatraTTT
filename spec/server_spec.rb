@@ -10,12 +10,20 @@ describe 'The TicTacToe Server' do
   include Rack::Test::Methods
 
   def app
-    Sinatra::Application
+    myapp = Sinatra::Application
+    # Set the application's views path to the correct place in the test environment.
+    # This feels like something we shouldn't have to do.
+    # The application root is also different in the test environment; so we may need to revisit this later.
+    myapp.set :views, myapp.settings.root + '/../views'
+    myapp
   end
 
   context '/' do
-    it 'loads' do
-      # Code here
+
+
+    it 'loads the client application' do
+      get "/"
+      expect(last_response).to be_ok
     end
   end
 

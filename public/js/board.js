@@ -9,6 +9,7 @@ function Board(element_string) {
   var listeners = [];
   var me = this;
 
+  // Initialization
   $('td', obj).each(function(){
     var obj = $(this);
     obj.index = cells.length;

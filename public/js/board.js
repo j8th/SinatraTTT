@@ -7,13 +7,14 @@ function Board(element_string) {
   var spots = [];
   var cells = [];
   var listeners = [];
+  var me = this;
 
   $('td', obj).each(function(){
     var obj = $(this);
     obj.index = cells.length;
     cells.push(obj);
     obj.click(function(){
-      this.click_event(obj.index);
+      me.click_event(obj.index);
     });
   });
 
@@ -38,5 +39,15 @@ function Board(element_string) {
     listeners.push(listener);
   };
 
+  this.draw = function(){
+    for(var i = 0; i < Board.BOARD_SIZE; i++) {
+      cells[i].text(spots[i]);
+    }
+  };
+
 
 }
+
+// Class Constants
+Board.BOARD_SIZE = 9;
+

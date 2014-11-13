@@ -43,4 +43,10 @@ describe('Board', function() {
     });
   });
 
+  describe('#draw', function(){
+    xit('Would need to confirm DOM elements, so we skip this test for now.', function(){
+
+    });
+  });
+
 });

@@ -19,8 +19,6 @@ describe 'The TicTacToe Server' do
   end
 
   context '/' do
-
-
     it 'loads the client application' do
       get "/"
       expect(last_response).to be_ok

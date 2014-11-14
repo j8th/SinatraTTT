@@ -18,7 +18,7 @@ class AI
     # If the board is empty, always take the middle.
     if board.empty?
       board.place(token, 0)
-      return
+      return 0
     end
 
     open_spots = get_open_spots(board)
@@ -27,7 +27,7 @@ class AI
     if open_spots.count == Board::BOARD_SIZE-1
       spot = board[4].nil? ? 4 : 0
       board.place(token, spot)
-      return
+      return spot
     end
     # ###### End Hacks ########
 
@@ -60,6 +60,7 @@ class AI
     max = scores.max_by { |k, v| v }
     spot = max[0]
     board.place(token, spot)
+    spot
   end
 
 

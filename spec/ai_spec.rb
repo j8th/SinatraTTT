@@ -95,6 +95,15 @@ describe 'AI' do
       ai1.move(board)
       expect(board[8]).to eq(ai1.token)
     end
+
+    it 'returns the spot where the ai chose to move' do
+      spot = ai1.move(board)
+      found = nil
+      (0..Board::BOARD_SIZE-1).each do |i|
+        found = i if board[i] == ai1.token
+      end
+      expect(spot).to eq(found)
+    end
   end
 
 

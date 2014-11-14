@@ -23,7 +23,7 @@ describe('Server', function(){
       jasmine.Ajax.requests.mostRecent().response({
         status: 200,
         contentType: 'application/json',
-        responseText: '{}'
+        responseText: '{ "aimove": 0 }'
       });
       expect(mycallback).toHaveBeenCalled();
     });

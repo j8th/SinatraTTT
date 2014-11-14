@@ -25,11 +25,12 @@ class Game
 
   def turn(spot = nil)
     if spot.nil?
-      @playerup.move(@board)
+      spot = @playerup.move(@board)
     else
       @board.place(@playerup.token, spot)
     end
     @playerup = @playerup == @player1 ? @player2 : @player1
+    spot
   end
 
   def play

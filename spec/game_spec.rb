@@ -1,4 +1,6 @@
 require 'game'
+require 'board'
+require 'ai'
 
 def count_tokens(player, board)
   tokens = []
@@ -111,6 +113,19 @@ describe Game do
       game.turn
       expect(count_tokens(player1, board)).to eq(1)
       expect(count_tokens(player2, board)).to eq(0)
+    end
+
+    it 'returns the spot where the player moved' do
+      spot = game.turn()
+      found = nil
+      (0..Board::BOARD_SIZE-1).each do |i|
+        found = i if not game.board[i].nil?
+      end
+      expect(spot).to eq(found)
+
+      game = Game.new(Board.new, AI.new(:X), AI.new(:O))
+      spot = game.turn(7)
+      expect(spot).to eq(7)
     end
   end
 

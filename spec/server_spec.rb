@@ -2,6 +2,7 @@ ENV['RACK_ENV'] = 'test'
 
 require 'sinatra'
 require 'server'
+require 'json'
 
 require 'rspec'
 require 'rack/test'
@@ -34,12 +35,38 @@ describe 'The TicTacToe Server' do
   end
 
   context '/move route' do
-    it 'makes a move on the game board' do
-      game = Game.new(Board.new, Human.new(:X), AI.new(:O))
+    let(:board) { Board.new }
+    let(:human) { Human.new(:X) }
+    let(:ai) { AI.new(:O) }
+    let(:game) { Game.new(board, human, ai) }
+
+    before(:example) {
       post "/move", {:spot => 4}, {"rack.session" => {'game' => game}}
+    }
+
+    it 'makes a move on the game board for the human player' do
       expect(last_response).to be_ok
       game = last_request.session[:game]
-      expect(game.board[4]).to eq(:X)
+      expect(game.board[4]).to eq(human.token)
+    end
+
+    it 'makes a move on the board for the ai player' do
+      expect(last_response).to be_ok
+      game = last_request.session[:game]
+      ai_piece_found = false
+      (0..Board::BOARD_SIZE-1).each do |i|
+        ai_piece_found = true if game.board[i] == ai.token
+      end
+      expect(ai_piece_found).to eq(true)
+    end
+
+    it 'returns the ai move in the json response.' do
+      ai_spot = nil
+      (0..Board::BOARD_SIZE-1).each do |i|
+        ai_spot = i if game.board[i] == ai.token
+      end
+      
+      expect(last_response.body).to eq({ :aimove => ai_spot }.to_json)
     end
   end
 end

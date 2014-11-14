@@ -7,7 +7,7 @@ function Server() {
 
 
   // Public Methods
-  this.send_move = function(myspot, success_callback) {
+  this.send_human_move = function(myspot, success_callback) {
     $.post(Server.MOVE_URL, {
         spot: myspot
       },

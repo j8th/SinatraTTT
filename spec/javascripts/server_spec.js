@@ -9,16 +9,16 @@ describe('Server', function(){
 
 
 
-  describe('#send_human_move', function(){
+  describe('#send_move', function(){
     it('sends a move to the server.', function(){
       spyOn($, 'post')
-      server.send_human_move(4, function(data){ });
+      server.send_move(4, function(data){ });
       expect($.post).toHaveBeenCalled();
     });
 
     it('invokes the callback function on success', function(){
       var mycallback = jasmine.createSpy('mycallback');
-      server.send_human_move(4, mycallback);
+      server.send_move(4, mycallback);
       expect(mycallback).not.toHaveBeenCalled();
       jasmine.Ajax.requests.mostRecent().response({
         status: 200,

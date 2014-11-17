@@ -7,6 +7,10 @@ function Server() {
 
 
   // Public Methods
+  this.new_game = function() {
+    $.get(Server.GAME_URL + '/new');
+  };
+
   this.send_move = function(myspot, success_callback) {
     $.post(Server.MOVE_URL, {
         spot: myspot
@@ -21,3 +25,4 @@ function Server() {
 // Class Constants
 Server.ROOT_URL = window.location.protocol + '//' + window.location.host
 Server.MOVE_URL = Server.ROOT_URL + '/move'
+Server.GAME_URL = Server.ROOT_URL + '/game'

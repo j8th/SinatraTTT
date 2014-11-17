@@ -8,10 +8,18 @@ describe('Server', function(){
   });
 
 
+  describe('#new_game', function(){
+    it('requests a new game session', function(){
+      spyOn($, 'get');
+      server.new_game();
+      expect($.get).toHaveBeenCalled();
+    });
+  });
+
 
   describe('#send_move', function(){
     it('sends a move to the server.', function(){
-      spyOn($, 'post')
+      spyOn($, 'post');
       server.send_move(4, function(data){ });
       expect($.post).toHaveBeenCalled();
     });

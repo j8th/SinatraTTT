@@ -8,7 +8,7 @@ get '/' do
 end
 
 get '/game/new' do
-  session[:game] = Game.new(Board.new, AI.new(:X), AI.new(:O))
+  session[:game] = Game.new(Board.new, Human.new(:X), AI.new(:O))
 end
 
 post '/move' do

@@ -52,6 +52,14 @@ describe('Game', function(){
       server = new Server();
       game = new Game(board, server);
       expect(board.add_listener).toHaveBeenCalledWith(game);
+    });
+
+    it('requests a new game session with the server', function(){
+      board = new Board();
+      server = new Server();
+      spyOn(server, 'new_game');
+      game = new Game(board, server);
+      expect(server.new_game).toHaveBeenCalled();
     });  
   });
 

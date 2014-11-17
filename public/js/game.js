@@ -7,6 +7,7 @@ function Game(a_board, a_server) {
 
   // Initialization
   board.add_listener(this);
+  server.new_game();
 
 
   // Public Methods

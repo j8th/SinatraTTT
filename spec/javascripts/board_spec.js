@@ -25,20 +25,18 @@ describe('Board', function() {
 
   describe('Event Listening', function(){
 
-    var game;
+    var some_obj;
 
     beforeEach(function(){
-      game = new Game();
+      some_obj = jasmine.createSpyObj('some_obj', ['listen_board_click_event']);
     });
 
     describe('#add_listener', function(){
       it('Adds an event listener to the Board.', function(){
-        spyOn(game, 'listen_board_click_event');
-
-        board.add_listener(game);
+        board.add_listener(some_obj);
         board.click_event(4);
 
-        expect(game.listen_board_click_event).toHaveBeenCalledWith(4);
+        expect(some_obj.listen_board_click_event).toHaveBeenCalledWith(4);
       });
     });
   });

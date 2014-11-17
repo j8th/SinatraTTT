@@ -6,12 +6,16 @@ function Game(a_board, a_server) {
   var server = a_server;
 
   // Initialization
+  board.add_listener(this);
 
 
   // Public Methods
   this.listen_board_click_event = function(spot) {
-    server.send_move(spot, function(data){
+    server.send_move(spot, function(json){
       board.place('X', spot);
+      if( json.aimove !== undefined )
+        board.place('O', json.aimove);
+      board.draw();
     });
   };
 }

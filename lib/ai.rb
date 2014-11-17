@@ -43,7 +43,7 @@ class AI
       game = Game.new(board_copy, AI.new(enemy_token), AI.new(token))
       if game.winner == token
         board.place(token, i)
-        return
+        return i
       end
       games[i] = game
     end

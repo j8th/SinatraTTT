@@ -1,4 +1,5 @@
 require 'board'
+require 'game'
 require 'ai'
 
 describe 'AI' do
@@ -103,6 +104,16 @@ describe 'AI' do
         found = i if board[i] == ai1.token
       end
       expect(spot).to eq(found)
+    end
+
+    # This test written to fix a bug where the spot moved was not returned if it was the last move of the game.
+    it 'returns the spot where the ai chose to move on the last move of the game' do
+      board.place(ai1.token, 4)
+      board.place(ai2.token, 1)
+      board.place(ai1.token, 0)
+      board.place(ai2.token, 2)
+      spot = ai1.move(board)
+      expect(spot).to eq(8)
     end
   end
 

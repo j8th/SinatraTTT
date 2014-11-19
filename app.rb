@@ -5,5 +5,9 @@ require 'sinatra'
 
 
 
+require 'game'
+require 'board'
+require 'ai'
+require 'human'
 require 'server'
 

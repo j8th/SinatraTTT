@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/sinatra/sinatra.git
-  revision: 4e92d604be5269b1d6527a6093f112d10b5b9d7f
+  revision: eb1acf2d8ecb365508f5d570c46893b2e97a460c
   specs:
     sinatra (1.4.5)
       rack (~> 1.4)
@@ -12,12 +12,12 @@ GEM
   specs:
     coderay (1.1.0)
     diff-lcs (1.2.5)
-    jasmine (2.0.3)
-      jasmine-core (~> 2.0.0)
+    jasmine (2.1.0)
+      jasmine-core (~> 2.1.0)
       phantomjs
       rack (>= 1.2.1)
       rake
-    jasmine-core (2.0.2)
+    jasmine-core (2.1.2)
     method_source (0.8.2)
     phantomjs (1.9.7.1)
     pry (0.10.1)
@@ -29,7 +29,7 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
-    rake (10.3.2)
+    rake (10.4.0)
     rspec (3.1.0)
       rspec-core (~> 3.1.0)
       rspec-expectations (~> 3.1.0)
@@ -43,16 +43,16 @@ GEM
       rspec-support (~> 3.1.0)
     rspec-support (3.1.2)
     slop (3.6.0)
-    tictactoe_j8th (0.2.0)
+    tictactoe_j8th (0.2.1)
     tilt (2.0.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  jasmine
+  jasmine (~> 2.1.0)
   pry
-  rack-test
-  rspec
-  sinatra!
-  tictactoe_j8th (= 0.2.0)
+  rack-test (~> 0.6.2)
+  rspec (~> 3.1.0)
+  sinatra (~> 1.4.5)!
+  tictactoe_j8th (~> 0.2.0)

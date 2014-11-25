@@ -7,6 +7,10 @@ require 'json'
 require 'rspec'
 require 'rack/test'
 
+require 'tictactoe_j8th'
+
+include TictactoeJ8th
+
 describe 'The TicTacToe Server' do
   include Rack::Test::Methods
 

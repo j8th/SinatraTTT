@@ -8,3 +8,5 @@ gem 'rspec'
 gem 'jasmine'
 
 gem 'pry'
+
+gem 'tictactoe_j8th', '0.2.0'

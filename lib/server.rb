@@ -19,6 +19,13 @@ post '/move' do
   { :aimove => spot }.to_json
 end
 
+get '/next-state' do
+  board = Board::from_s(params[:board])
+  ai = AI.new(:O)
+  ai.move(board)
+  board.to_s
+end
+
 
 
 

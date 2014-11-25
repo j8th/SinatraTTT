@@ -73,5 +73,17 @@ describe 'The TicTacToe Server' do
       expect(last_response.body).to eq({ :aimove => ai_spot }.to_json)
     end
   end
+
+  context '/next-state route' do
+    it 'returns a string representation of the next board state from a given get parameter' do
+      get '/next-state', {:board => 'XXEOEEEEE'}
+      expect(last_response).to be_ok
+      expect(last_response.body).to eq('XXOOEEEEE')
+
+      get '/next-state', {:board => 'OXEEXEEEE'}
+      expect(last_response).to be_ok
+      expect(last_response.body).to eq('OXEEXEEOE')
+    end
+  end
 end
 

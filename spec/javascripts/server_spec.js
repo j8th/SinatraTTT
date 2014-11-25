@@ -37,4 +37,31 @@ describe('Server', function(){
     });
   });
 
+  describe('#next_state', function(){
+    var board;
+
+    beforeEach(function(){
+      board = new Board();
+    });
+
+    it('sends a board state to the server as a get parameter', function(){
+      spyOn($, 'get');
+      server.next_state(board, function(board_string){});
+      expect($.get).toHaveBeenCalled();
+    });
+
+    it('invokes the callback function on success', function(){
+      var mycallback = jasmine.createSpy('mycallback');
+      board.place('X', 0);
+      server.next_state(board, mycallback);
+      expect(mycallback).not.toHaveBeenCalled();
+      jasmine.Ajax.requests.mostRecent().response({
+        status: 200,
+        contentType: 'text/plain',
+        responseText: 'XEEEOEEEE'
+      });
+      expect(mycallback).toHaveBeenCalled();
+    });
+  });
+
 });

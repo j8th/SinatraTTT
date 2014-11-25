@@ -41,6 +41,34 @@ describe('Board', function() {
     });
   });
 
+  describe('#to_s', function(){
+    it('returns a string representation of the board', function(){
+      board.place('X', 0);
+      board.place('X', 1);
+      board.place('O', 3);
+
+      expect(board.to_s()).toEqual('XXEOEEEEE');
+
+      board = new Board();
+      board.place('X', 0);
+      board.place('O', 8);
+
+      expect(board.to_s()).toEqual('XEEEEEEEO')
+    });
+  });
+
+  describe('#from_s', function(){
+    it('returns a board object based on the string repressentation', function(){
+      var board_string = 'XXEOEEEEE';
+      var board = Board.from_s(board_string);
+      for(var i =0; i < Board.BOARD_SIZE; i++)
+        if(board_string[i] === 'E')
+          expect(board.get(i)).toEqual(null);
+        else
+          expect(board.get(i)).toEqual(board_string[i]);
+    });
+  });
+
   describe('#draw', function(){
     xit('Would need to confirm DOM elements, so we skip this test for now.', function(){
 

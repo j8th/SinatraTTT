@@ -46,9 +46,27 @@ function Board(element_string) {
     }
   };
 
+  this.to_s = function(){
+    var string = '';
+    for(var i = 0; i < Board.BOARD_SIZE; i++)
+      if (spots[i] === undefined)
+        string += 'E';
+      else
+        string += spots[i];
+    return string;
+  };
 
 }
 
 // Class Constants
 Board.BOARD_SIZE = 9;
 
+
+// Class Methods
+Board.from_s = function(board_string) {
+  var board = new Board();
+  for(var i = 0; i < Board.BOARD_SIZE; i++)
+    if(board_string[i] != 'E')
+      board.place(board_string[i], i);
+  return board;
+};

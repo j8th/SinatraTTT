@@ -10,6 +10,9 @@ function Board(element_string) {
   var me = this;
 
   // Initialization
+  for(var i = 0; i < Board.BOARD_SIZE; i++)
+    spots[i] = null;
+
   $('td', obj).each(function(){
     var obj = $(this);
     obj.index = cells.length;
@@ -26,8 +29,6 @@ function Board(element_string) {
   };
 
   this.get = function(i) {
-    if( spots[i] === undefined )
-      return null;
     return spots[i];
   };
 
@@ -49,7 +50,7 @@ function Board(element_string) {
   this.to_s = function(){
     var string = '';
     for(var i = 0; i < Board.BOARD_SIZE; i++)
-      if (spots[i] === undefined)
+      if (spots[i] === null)
         string += 'E';
       else
         string += spots[i];

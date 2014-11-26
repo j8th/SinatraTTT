@@ -12,10 +12,11 @@ function Game(a_board, a_server) {
 
   // Public Methods
   this.listen_board_click_event = function(spot) {
-    server.send_move(spot, function(json){
-      board.place('X', spot);
-      if( json.aimove !== undefined )
-        board.place('O', json.aimove);
+    board.place('X', spot);
+    server.next_state(board, function(board_string){
+      var aboard = Board.from_s(board_string);
+      for(var i = 0; i < Board.BOARD_SIZE; i++)
+        board.place(aboard.get(i), i);
       board.draw();
     });
   };

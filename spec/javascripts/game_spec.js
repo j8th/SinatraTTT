@@ -14,10 +14,10 @@ describe('Game', function(){
     spyOn(board, 'draw');
 
     // Mock out the Server so we don't make real ajax requests.
-    spyOn(server, 'send_move').and.callFake(function(myspot, success_callback){
+    spyOn(server, 'next_state').and.callFake(function(myspot, success_callback){
       // The server returns its move.
-      var json_obj = { aimove: 0 };
-      success_callback(json_obj);
+      var board_string = 'OEEEXEEEE';
+      success_callback(board_string);
     });
   });
 
@@ -26,7 +26,7 @@ describe('Game', function(){
   describe('#listen_board_click_event', function(){
     it('sends a move to the server with the spot clicked.', function(){
       game.listen_board_click_event(4);
-      expect(server.send_move).toHaveBeenCalled();
+      expect(server.next_state).toHaveBeenCalled();
     });
 
     it('updates the board with the move on success from the server.', function(){

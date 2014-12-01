@@ -1,0 +1,40 @@
+<%
+  # Expects local variables board and cell
+
+  # 1) Get the token.
+  token = board[cell]
+
+
+  # 2) Generate the CSS classes
+  # Should move into Board class, but for now...
+  TOP_ROW = [0, 1, 2]
+  LEFT_SIDE = [0, 3, 6]
+  RIGHT_SIDE = [2, 5, 8]
+  BOTTOM_ROW = [6, 7, 8]
+
+  classes = []
+
+  classes.push('border-bottom') if TOP_ROW.include? cell
+  classes.push('border-top') if BOTTOM_ROW.include? cell
+  classes.push('border-right') if LEFT_SIDE.include? cell
+  classes.push('border-left') if RIGHT_SIDE.include? cell
+
+  classes = classes.join(' ')
+
+
+  # 3) Generate the cell contents
+  cell_contents = if token.nil?
+    board_copy = board.create_copy()
+    board_copy.place(:X, cell)
+    url = '/?board=' + board_copy.to_s()
+    "<a href=\"#{url}\"></a>"
+  else
+    token
+  end
+
+%>
+
+<% # Now that we have all the things we need, spit out the cell. %>
+<td class="<%= classes %>">
+  <%= cell_contents %>
+</td>

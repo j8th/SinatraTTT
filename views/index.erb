@@ -1,17 +1,10 @@
 <table id="board">
+  <% 3.times do |row_num| %>
   <tr>
-  	<td class="border-right border-bottom"></td>
-  	<td class="border-bottom"></td>
-  	<td class="border-left border-bottom"></td>
+    <% 3.times do |col_num| %>
+      <%= erb :board_cell,
+          :locals => {:board => board, :cell => row_num * 3 + col_num} %>
+    <% end %>
   </tr>
-  <tr>
-  	<td class="border-right"></td>
-  	<td></td>
-  	<td class="border-left"></td>
-  </tr>
-  <tr>
-  	<td class="border-right border-top"></td>
-  	<td class="border-top"></td>
-  	<td class="border-left border-top"></td>
-  </tr>
+  <% end %>
 </table>

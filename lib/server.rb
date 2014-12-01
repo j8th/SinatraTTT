@@ -4,7 +4,6 @@ require 'json'
 enable :sessions
 
 get '/' do
-  session[:game] = Game.new(Board.new, Human.new(:X), AI.new(:O))
 end
 
 get '/game/new' do

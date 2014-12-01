@@ -20,6 +20,13 @@ td.border-left {
   border-left: 2px solid black;
 }
 
+/* Make the clickable area of the links fill the entire board cell. */
+td a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 /*
  * Gets rid of space between table cells for us.
  *

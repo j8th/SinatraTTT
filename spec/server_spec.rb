@@ -24,14 +24,20 @@ describe 'The TicTacToe Server' do
   end
 
   context '/' do
-    xit 'does this' do
+    it 'starts a new game with no board parameter passed' do
+      get '/'
+      expect(last_response).to be_ok
+      expect(last_response.body).to include('<a href="/?board=XEEEEEEEE"></a>')
+    end
+
+    it 'outputs a clickable board with the next move made by the AI' do
       get '/', {:board => 'XXEOEEEEE'}
       expect(last_response).to be_ok
-      expect(last_response.body).to eq('XXOOEEEEE')
+      expect(last_response.body).to include('<a href="/?board=XXOOXEEEE"></a>')
 
       get '/', {:board => 'OXEEXEEEE'}
       expect(last_response).to be_ok
-      expect(last_response.body).to eq('OXEEXEEOE')
+      expect(last_response.body).to include('<a href="/?board=OXEEXEEOX"></a>')
     end
   end
 

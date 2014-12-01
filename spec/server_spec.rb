@@ -24,9 +24,10 @@ describe 'The TicTacToe Server' do
   end
 
   context '/' do
-    it 'loads the client application' do
+    it 'loads a new game if no get parameters were passed' do
       get "/"
       expect(last_response).to be_ok
+      expect(last_request.session[:game]).to be_a Game
     end
   end
 
